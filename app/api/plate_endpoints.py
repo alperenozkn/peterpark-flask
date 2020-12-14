@@ -8,7 +8,7 @@ from flask import request
 
 @bp.route('/plate', methods=['GET'])
 def get_plates():
-    return jsonify("GET REQ")
+    return jsonify([i.as_dict() for i in Plate.query.all()])
 
 
 @bp.route('/plate', methods=['POST'])
@@ -18,7 +18,6 @@ def create_plate():
         return malformed_request('Request body must include plate field.')
     else:
         plate = GermanPlate(data['plate'])
-        print(plate.plate)
 
         if plate.is_valid():
             if not Plate.query.filter_by(plate=plate.plate).first():
