@@ -11,17 +11,8 @@ class Plate(db.Model):
     def __init__(self, plate):
         self.plate = plate
 
-    def __repr__(self):
-        return '<Plate {}>'.format(self.plate)
-
-    def to_dict(self):
-        data = {
-            'id': self.id,
-            'plate': self.plate,
-            'timestamp': self.timestamp
-        }
-
-        return data
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns if not c.name == 'id'}
 
     def is_valid(self):
         if self.plate.strip():
@@ -36,7 +27,7 @@ class Plate(db.Model):
             return False
 
     def check_digits(self, digits, max_length):
-        if digits.isnumeric() and len(digits) <= max_length:
+        if digits.isnumeric() and len(digits) <= max_length and not digits[0] == '0':
             return True
         else:
             return False
