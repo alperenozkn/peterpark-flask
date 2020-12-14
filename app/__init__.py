@@ -17,4 +17,11 @@ def create_app(config_class=Config):
     from app.api import bp as api_bp
     app.register_blueprint(api_bp)
 
+    if app.config['TESTING']:
+        client = app.test_client()
+        ctx = app.app_context()
+        ctx.push()
+        return app, client
+
     return app
+
