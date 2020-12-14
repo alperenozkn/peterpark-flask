@@ -1,5 +1,5 @@
 from app.api import bp
-from app.models import Plate, GermanPlate
+from app.model.plates import Plate, GermanPlate
 from flask import jsonify
 from app import db
 from app.api.responses import malformed_request, invalid_plate, valid_plate

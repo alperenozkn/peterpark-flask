@@ -1,5 +1,5 @@
 from app import create_app, db
-from app.models import Plate
+from app.model.plates import Plate
 
 app = create_app()
 
