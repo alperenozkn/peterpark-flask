@@ -1,0 +1,9 @@
+version: "2"
+services:
+  app:
+    container_name: peterpark-interview
+    build:
+      context: ""
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
