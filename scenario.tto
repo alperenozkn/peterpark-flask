@@ -1,0 +1,6 @@
+<sui:scenario id="sc:oiyckVlkI" device="${ @exec(@deviceList('deviceDetails')) }" xray:testId="DEVELOP-4042" xray:testSummary="Automata Created20211110150407" xray:testDescription="Test">
+  <test-step xray:stepExpectedResult="Random data 2" xray:stepDescription="Step with actions" xray:stepData="Random data 2">
+    <echo description="No page file after this echo" message="The page file will be added after this"/>
+    <pause ms="3000" description="Pause after echo"/>
+  </test-step>
+</sui:scenario>
